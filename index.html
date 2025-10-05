@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temperature converter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #container {
+
+            background-color: rgb(66, 63, 63);
+            color: white;
+            margin: 10%;
+            padding: 20px;
+            border-radius: 30px;
+            width: 275px;
+            height: 350px;
+            margin: 250px auto;
+            text-align: center;
+
+
+        }
+
+        #container h1 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        #row {
+            display: flex;
+            justify-content: space-between;
+            gap: 35px;
+            margin-bottom: 20px;
+
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            flex: 1;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            padding-top: 5px;
+        }
+
+        input,
+        select {
+            border: none;
+            border-bottom: 2px solid white;
+            background: transparent;
+            color: rgb(23, 25, 25);
+            outline: none;
+            padding: 5px
+        }
+
+        input {
+            color: white;
+        }
+
+        button {
+            display: flex;
+            background: white;
+            color: black;
+            border: none;
+            padding: 10px;
+            width: 60%;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            justify-content: center;
+            font-weight: bold;
+
+
+
+
+
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid white;
+            padding-bottom: 10px;
+            padding-top: 20px;
+        }
+
+        h1 {
+            text-align: left;
+        }
+
+        input {
+            width: 90%;
+            padding-bottom: 20px;
+        }
+
+        .label2 {
+            padding-top: 10px;
+        }
+
+        #headerimg {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 20px;
+
+        }
+
+        img {
+            
+            border-radius: 60px;
+            background-color: aqua;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="headerimg">
+            <h1>Temperature<br>converter</h1>
+            <img src="C:\Users\AISHWARYA\OneDrive\Desktop\img\h6.jpeg"  alt="image" width="100px">
+        </div>
+        <div id="row">
+            <div class="input-group">
+                <label>Degrees</label>
+                <input type="number" id="inputs">
+            </div>
+            <div class="input-group">
+                <label class="label2">Type</label>
+                <select id="selectType">
+                    <option value="fahrenheit">fahrenheit</option>
+                    <option value="kelvin">kelvin</option>
+                </select>
+            </div>
+        </div>
+        <button id="convert">CONVERT</button>
+        <h3 id="finalResult">Result (celsius)</h3>
+
+        <!--  <input type="text" id="result" placeholder="Result (celsius)">-->
+    </div>
+    <script>
+        const degreeinput = document.getElementById("inputs");
+        const typeinput = document.getElementById("selectType");
+        const convertBtn = document.getElementById("convert");
+        const result = document.getElementById("finalResult");
+        convertBtn.addEventListener("click", () => {
+            let degree = parseFloat(degreeinput.value);
+            let type = typeinput.value;
+            let convertvalue;
+            if (isNaN(degree)) {
+                result.textcontent = "enter valid number";
+                return;
+            }
+            if (type === "fahrenheit") {
+                convertvalue = (degree - 32) * 5 / 9;
+                result.textContent = `${convertvalue.toFixed(2)} °C`;//here for degree symbol use alt+0176(type this in numeric keypad)
+            } else if (type === "kelvin") {
+                convertvalue = (degree - 273.15);
+                result.textContent = `${convertvalue.toFixed(2)} °C`;
+            }
+        });
+    </script>
+</body>
+
+</html>
